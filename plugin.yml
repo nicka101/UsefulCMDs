@@ -1,0 +1,71 @@
+name: UsefulCMDs
+main: com.nicka101.UsefulCMDs.UsefulCMDs
+version: 1.2
+description: >
+             A Collection of Useful Commands for Server Admins
+commands:
+  diff:
+    description: Displays or Changes the Difficulty for the Current World
+    usage: /diff [easy|e|normal|n|hard|h|peaceful|p]
+    permission: usefulcmds.difficulty
+    permission-message: You don't have the Required Permission to perform this Command.
+  difficulty:
+    description: Displays or Changes the Difficulty for the Current World
+    usage: /difficulty [easy|e|normal|n|hard|h|peaceful|p]
+    permission: usefulcmds.difficulty
+    permission-message: You don't have the Required Permission to perform this Command.
+  pvp:
+    description: Toggles PvP flag for the Current World
+    usage: /pvp
+    permission: usefulcmds.pvp
+    permission-message: You don't have the Required Permission to perform this Command.
+  shoot:
+    description: Shoots an Arrow
+    usage: /shoot
+    permission: usefulcmds.shoot
+    permission-message: You don't have the Required Permission to perform this Command.
+  thunder:
+    description: Starts a 1000 tick long Thunder Storm in the current world
+    usage: /thunder
+    permission: usefulcmds.thunder
+    permission-message: You don't have the Required Permission to perform this Command.
+  target:
+    description: Makes all hostile mobs target the specified player.
+    usage: /target <player>
+    permission: usefulcmds.target
+    permission-message: You don't have the Required Permission to perform this Command.
+  mount:
+    description: Allows you to ride other players
+    usage: /mount <player_to_ride> [passenger default=you]
+    permission: usefulcmds.mount
+    permission-message: You don't have the Required Permission to perform this Command.
+  spawncj:
+    description: Spawns a Creeper Jockey at your current position or at the position of another player.
+    usage: /spawncj [player default=you]
+    permission: usefulcmds.spawncj
+    permission-message: You don't have the Required Permission to perform this Command.
+  effect:
+    description: Adds Potion Effects to a player.
+    usage: /effect <blind|nodmg|jump|confuse> <duration= short|medium|long> <player>
+    permission: usefulcmds.effects
+    permission-message: You don't have the Required Permission to perform this Command.
+  death:
+    description: Plays the Death Animation for a Player.
+    usage: /death [player]
+    permission: usefulcmds.death
+    permission-message: You don't have the Required Permission to perform this Command.
+  hidefrom:
+    description: Prevent the specified player from seeing you.
+    usage: /hidefrom
+    permission: usefulcmds.hide
+    permission-message: You don't have the Required Permission to perform this Command.
+  freeze:
+    description: Freezes a Player in Place.
+    usage: /freeze <player>
+    permission: usefulcmds.freeze
+    permission-message: You don't have the Required Permission to perform this Command.
+  buildanything:
+    description: Enables you to build without restriction from standard MC rules.
+    usage: /buildanything
+    permission: usefulcmds.buildanything
+    permission-message: You don't have the Required Permission to perform this Command.
