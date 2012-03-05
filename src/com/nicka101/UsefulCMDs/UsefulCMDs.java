@@ -308,7 +308,9 @@ public class UsefulCMDs extends JavaPlugin implements Listener{
 				for(World world : worlds){
 					List<Entity> entities = world.getEntities();
 					for(Entity ent : entities){
-						if((ent instanceof LivingEntity) && !(ent instanceof Player)) ent.setVelocity(vector);
+						if((ent instanceof LivingEntity) && !(ent instanceof Player)){
+							ent.setVelocity(vector);
+						}
 					}
 				}
 				player.setVelocity(vector);
