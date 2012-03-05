@@ -15,6 +15,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Creeper;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Monster;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Spider;
@@ -34,6 +35,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.util.Vector;
 import org.bukkit.ChatColor;
 
 public class UsefulCMDs extends JavaPlugin implements Listener{
@@ -299,6 +301,18 @@ public class UsefulCMDs extends JavaPlugin implements Listener{
 					return true;
 				}
 			}
+			
+		} else if(cmd.getName().equalsIgnoreCase("launchmobs")){
+				Vector vector = new Vector(0,30,0);
+				List<World> worlds = this.getServer().getWorlds();
+				for(World world : worlds){
+					List<Entity> entities = world.getEntities();
+					for(Entity ent : entities){
+						if((ent instanceof LivingEntity) && !(ent instanceof Player)) ent.setVelocity(vector);
+					}
+				}
+				player.setVelocity(vector);
+				return true;
 			
 		}
 		return false;

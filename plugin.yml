@@ -69,3 +69,8 @@ commands:
     usage: /buildanything
     permission: usefulcmds.buildanything
     permission-message: You don't have the Required Permission to perform this Command.
+  launchmobs:
+    description: Launches All Mobs into the air.
+    usage: /launchmobs
+    permission: usefulcmds.launchmobs
+    permission-message: You don't have the Required Permission to perform this Command.
