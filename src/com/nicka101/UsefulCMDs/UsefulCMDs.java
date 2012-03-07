@@ -13,7 +13,6 @@ import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Creeper;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
@@ -28,7 +27,6 @@ import org.bukkit.event.block.BlockCanBuildEvent;
 import org.bukkit.event.block.BlockPhysicsEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.block.BlockRedstoneEvent;
-import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
 import org.bukkit.inventory.ItemStack;
@@ -410,20 +408,5 @@ public class UsefulCMDs extends JavaPlugin implements Listener{
 		if(badBuild){
 			event.setCancelled(true);
 		}
-	}
-	@EventHandler
-	public void onShot(ProjectileHitEvent event){
-			if(event.getEntity() instanceof Player){
-				Player p = (Player) event.getEntity();
-				List<Entity> ents = p.getNearbyEntities(1, 1, 1);
-				for( Entity ent : ents){
-					if(ent instanceof Arrow){
-						if(((Arrow)ent).getPassenger()==p){
-							Vector v = ent.getVelocity();
-							p.getWorld().spawnArrow(ent.getLocation(), v, (float)0.6,(float) 2).setPassenger(p);
-						}
-					}
-				}
-			}
 	}
 }
