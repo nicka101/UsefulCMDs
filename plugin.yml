@@ -74,3 +74,8 @@ commands:
     usage: /launchmobs
     permission: usefulcmds.launchmobs
     permission-message: You don't have the Required Permission to perform this Command.
+  launchplayer:
+    description: Launches the specified player on an Arrow.
+    usage: /launchplayer [player]
+    permission: usefulcmds.launchplayer
+    permission-message: You don't have the Required Permission to perform this Command.
