@@ -27,7 +27,9 @@ import org.bukkit.event.block.BlockCanBuildEvent;
 import org.bukkit.event.block.BlockPhysicsEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.block.BlockRedstoneEvent;
+import org.bukkit.event.entity.ExplosionPrimeEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.PluginDescriptionFile;
@@ -37,6 +39,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.SmallFireball;
 
 public class UsefulCMDs extends JavaPlugin implements Listener{
 	
@@ -47,7 +50,7 @@ public class UsefulCMDs extends JavaPlugin implements Listener{
 	public ChatColor WHITE = ChatColor.WHITE;
 	public PotionEffect nodmg = new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 2000, 4);
 	private Player[] frozen = {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, };
-	private boolean badBuild = false;
+	private static boolean badBuild = false;
 	
 	
 	@Override
@@ -113,7 +116,7 @@ public class UsefulCMDs extends JavaPlugin implements Listener{
 			}
 		} else if(cmd.getName().equalsIgnoreCase("shoot")){
 			if((player != null) && player.hasPermission("usefulcmds.shoot")){
-				player.shootArrow();
+				player.launchProjectile(SmallFireball.class);
 				return true;
 			}
 		} else if(cmd.getName().equalsIgnoreCase("thunder")){
@@ -325,11 +328,27 @@ public class UsefulCMDs extends JavaPlugin implements Listener{
 				} else {
 					target = this.getServer().getPlayer(args[0]);
 					if(target==null) return false;
-					v = target.getLocation().getDirection().multiply(3);
+					
 					
 				}
+				v = player.getLocation().getDirection().multiply(10);
 				if(v==null) return false;
-				player.setVelocity(v);
+				if(target != player) target.teleport(player);
+				target.setVelocity(v);
+				return true;
+			}
+		} else if(cmd.getName().equalsIgnoreCase("bed")){
+			if((player != null) && player.hasPermission("usefulcmds.bed")){
+				if(args.length==1){
+					if(args[0].equalsIgnoreCase("unset")){
+						player.setBedSpawnLocation(player.getWorld().getSpawnLocation());
+						player.sendMessage(RED + "[UsefulCMDs]" + WHITE + " Bed Spawn Location Removed.");
+						return true;
+					}
+				}
+				player.setBedSpawnLocation(player.getLocation());
+				player.setSleepingIgnored(false);
+				player.sendMessage(RED + "[UsefulCMDs]" + WHITE + " Bed Spawn Location Set.");
 				return true;
 			}
 		}
@@ -344,6 +363,7 @@ public class UsefulCMDs extends JavaPlugin implements Listener{
 			if(frozen[i].equals(p)){
 				event.setCancelled(true);
 			}
+			
 		}
 	}
 	@EventHandler
@@ -372,6 +392,8 @@ public class UsefulCMDs extends JavaPlugin implements Listener{
 					drops = new ItemStack(Material.ICE, 1);
 				} else if(block.getTypeId()==97){
 					drops = new ItemStack(97, 1, block.getData());
+				} else if(block.getTypeId()==78){
+					drops = new ItemStack(78, 1);
 				} else {
 					return;
 				}
@@ -393,9 +415,8 @@ public class UsefulCMDs extends JavaPlugin implements Listener{
 	}
 	@EventHandler
 	public void onCanBuild(BlockCanBuildEvent event){
-		if(badBuild){
-			event.setBuildable(true);
-		}
+		if(!badBuild) return;
+		event.setBuildable(true);
 	}
 	@EventHandler
 	public void onRedstone(BlockRedstoneEvent event){
@@ -407,6 +428,38 @@ public class UsefulCMDs extends JavaPlugin implements Listener{
 	public void onPhysics(BlockPhysicsEvent event){
 		if(badBuild){
 			event.setCancelled(true);
+		}
+	}
+	/*@EventHandler
+	public void onSpongeMove(PlayerMoveEvent event){
+		Player player = event.getPlayer();
+		Location loc = event.getTo();
+		Location current = player.getLocation();
+		Location standingOn = new Location(player.getWorld(), loc.getX(), loc.getY()-1, loc.getZ());
+		Block block = standingOn.getBlock();
+		if(block.getType() == Material.SPONGE){
+			Vector v = new Vector(loc.getX()-current.getX(), 3, loc.getX()-current.getY());
+			player.setVelocity(v);
+		}
+	}*/
+	@EventHandler
+	public void onCreeperPrime(ExplosionPrimeEvent event){
+		Entity ent = event.getEntity();
+		if(ent instanceof LivingEntity){
+			Creeper creeper = (Creeper) ent;
+			if(creeper.getTarget() instanceof Player){
+				Player p = (Player) creeper.getTarget();
+				if(p.getGameMode() == GameMode.CREATIVE){
+					creeper.setTarget(null);
+					event.setCancelled(true);
+				}
+			}
+		}
+	}
+	@EventHandler
+	public void onPlayerRespawn(PlayerRespawnEvent event){
+		if(!event.isBedSpawn()){
+			event.setRespawnLocation(event.getPlayer().getBedSpawnLocation());
 		}
 	}
 }

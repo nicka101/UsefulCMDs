@@ -79,3 +79,8 @@ commands:
     usage: /launchplayer [player]
     permission: usefulcmds.launchplayer
     permission-message: You don't have the Required Permission to perform this Command.
+  bed:
+    description: Sets Your Bed Spawn to the current Location.
+    usage: /bed [unset]
+    permission: usefulcmds.bed
+    permission-message: You don't have the Required Permission to perform this Command.
