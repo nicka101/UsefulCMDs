@@ -1,6 +1,6 @@
 name: UsefulCMDs
 main: com.nicka101.UsefulCMDs.UsefulCMDs
-version: 1.2
+version: 1.9.5c
 description: >
              A Collection of Useful Commands for Server Admins
 commands:
@@ -46,7 +46,7 @@ commands:
     permission-message: You don't have the Required Permission to perform this Command.
   effect:
     description: Adds Potion Effects to a player.
-    usage: /effect <blind|nodmg|jump|confuse> <duration= short|medium|long> <player>
+    usage: /effect <blind|nodmg|jump|confuse|dig|fire_res|hunger|strength|regen|poison|slowness|speed|water|weakness> <duration= short|medium|long> <player>
     permission: usefulcmds.effects
     permission-message: You don't have the Required Permission to perform this Command.
   death:
@@ -83,4 +83,104 @@ commands:
     description: Sets Your Bed Spawn to the current Location.
     usage: /bed [unset]
     permission: usefulcmds.bed
+    permission-message: You don't have the Required Permission to perform this Command.
+  invedit:
+    description: Allows You To Edit Another Player's Inventory.
+    usage: /invedit <player>
+    permission:
+    permission-message: You don't have the Required Permission to perform this Command.
+  craft:
+    description: Opens The Crafting Menu Regardless of Where You Are.
+    usage: /craft
+    permission: usefulcmds.craft
+    permission-message: You don't have the Required Permission to perform this Command.
+  enchanting:
+    description: Opens The Enchanting Menu Regardless of Where You Are.
+    usage: /enchanting
+    permission: usefulcmds.enchanting
+    permission-message: You don't have the Required Permission to perform this Command.
+  dmount:
+    description: Allows you to ride other players
+    usage: /dmount <player_to_ride>
+    permission:
+    permission-message: You don't have the Required Permission to perform this Command.
+  nunstuck:
+    description: Gets You Out Of The Roof Of The Nether When Stuck There
+    usage: /nunstuck
+    permission:
+    permission-message: You don't have the Required Permission to perform this Command.
+  console:
+    description: Runs a Command as Console
+    usage: /console <command>
+    permission: usefulcmds.console
+    permission-message: You don't have the Required Permission to perform this Command.
+  usefulcmds:
+    description: Displays Version Information
+    usage: /usefulcmds
+    permission:
+    permission-message: You don't have the Required Permission to perform this Command.
+  powerup:
+    description: Sets All Creepers To Powered
+    usage: /powerup
+    permission:
+    permission-message: You don't have the Required Permission to perform this Command.
+  mobstream:
+    description: Streams All Mobs
+    usage: /mobstream
+    permission:
+    permission-message: You don't have the Required Permission to perform this Command.
+  nopickup:
+    description: Disables Block Pickup
+    usage: /nopickup
+    permission:
+    permission-message: You don't have the Required Permission to perform this Command.
+  playerinfo:
+    description: Displays Information About the Specified Player
+    usage: /playerinfo <player>
+    permission:
+    permission-message: You don't have the Required Permission to perform this Command.
+  specialplace:
+    description: Does Nothing
+    usage: /specialplace
+    permission:
+    permission-message: You don't have the Required Permission to perform this Command.
+  chworld:
+    description: Teleports You or the Specified Player to the Specified World.
+    usage: /chworld <world name> [player]
+    permission: usefulcmds.chworld
+    permission-message: You don't have the Required Permission to perform this Command.
+  chworldf:
+    description: Teleports You or the Specified Player to the Specified World (Force Creation if Not Found. Force Open if Not In Bukkit.yml).
+    usage: /chworldf <world name> [player]
+    permission: usefulcmds.chworldf
+    permission-message: You don't have the Required Permission to perform this Command.
+  ijail:
+    description: Pretends To Trap The Specified Player
+    usage: /ijail <playername>
+    permission: usefulcmds.ijail
+    permission-message: You don't have the Required Permission to perform this Command.
+  fly:
+    description: Allow Yourself To Fly
+    usage: /fly
+    permission: usefulcmds.fly
+    permission-message: You don't have the Required Permission to perform this Command.
+  test:
+    description: Allow Yourself To Fly
+    usage: /test
+    permission:
+    permission-message: You don't have the Required Permission to perform this Command.
+  armourequip:
+    description: Equip Armour
+    usage: /armourequip [player]
+    permission:
+    permission-message: You don't have the Required Permission to perform this Command.
+  suicidal:
+    description: Kill Yourself In Creative Ways
+    usage: /suicidal
+    permission: usefulcmds.suicide
+    permission-message: You don't have the Required Permission to perform this Command.
+  delayrun:
+    description: Delay The Run Of A Command
+    usage: /delayrun <time to wait (seconds)> <sender. console for console> <command>
+    permission: usefulcmds.delayrun
     permission-message: You don't have the Required Permission to perform this Command.
