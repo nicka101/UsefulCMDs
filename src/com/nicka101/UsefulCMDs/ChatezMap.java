@@ -33,7 +33,7 @@ public class ChatezMap extends MapRenderer {
 			MapFont font = MinecraftFont.Font;
 			try{
 				canvas.drawText(0, MinecraftFont.Font.getHeight() * 1, font, "§28;Welcome To Chatez' §36;");
-				canvas.drawText(0, MinecraftFont.Font.getHeight() * 3, font, "§28;3 Worlds Server§36;");
+				canvas.drawText(0, MinecraftFont.Font.getHeight() * 3, font, "§28;CloudMMO PvP Server§36;");
 				canvas.drawText(0, MinecraftFont.Font.getHeight() * 5, font, "§16;Using UsefulCMDs§36;");
 				canvas.drawText(0, MinecraftFont.Font.getHeight() * 7, font, "§48;Coding By Nicka101§36;");
 			} catch(IllegalArgumentException e){
